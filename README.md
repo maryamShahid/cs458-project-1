@@ -1,4 +1,4 @@
-# test-router
+# netflix-project
 
 ## Project setup
 ```
