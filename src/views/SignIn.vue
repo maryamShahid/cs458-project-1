@@ -21,10 +21,12 @@
                 <div v-if="passwordError" class="error-text">Your password must contain between 4 and 60 characters.</div>
               </div>
               <button class="loginBtn" @click="register">Sign In</button>
-              <div class="description" style="font-size: 20px; margin-bottom: -60px">
-                <img alt="" src="./../assets/fb-icon.svg" style="margin-bottom: -16px">
-                Login with Facebook
-              </div>
+              <router-link to="/facebook">
+                <div class="description" style="font-size: 20px; margin-bottom: -60px">
+                  <img alt="" src="./../assets/fb-icon.svg" style="margin-bottom: -16px">
+                  Login with Facebook
+                </div>
+              </router-link>
               <div class="description">New to Netflix? Sign up now.</div>
               <div class="description-2">This page is protected by Google reCAPTCHA to ensure you're not a bot. Learn more.</div>
             </div>
