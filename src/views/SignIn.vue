@@ -14,7 +14,7 @@
               <div v-if="usernameError" class="error-text">Please enter a valid email or phone number.</div>
               <div class="login-page__start_form_input">
                 <div style="position: relative">
-                  <div :class="{'login-input-error': passwordError}">
+                  <div :class="{'login-input-error': passwordError}" style="margin-top: 20px">
                     <input v-model="password" :type="hidden ? 'password' : 'text'" class="loginInput" @click="passwordError = false" placeholder="Password" @keyup.enter="register">
                   </div>
                 </div>
