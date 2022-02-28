@@ -105,14 +105,14 @@ export default {
   background: rgba(0, 0, 0, 0.78);
   margin-left: auto;
   margin-right: auto;
-  width: 700px;
+  width: 650px;
   border-radius: 10px;
 }
 .login-page__start_form_input{
   margin-bottom: 30px;
 }
 .login-page__start_form_input p{
-  margin-left: 90px;
+  margin-left: 100px;
   padding-top: 80px;
   padding-bottom: 20px;
   font-size: 52px;
@@ -132,7 +132,6 @@ export default {
   color:white;
   outline: none;
   transition:.3s ease-in-out;
-  margin-left: -40px;
 }
 .login-input-error p{
   margin:0 2px 0 0;
@@ -152,7 +151,6 @@ export default {
   color:white;
   outline: none;
   transition:.3s ease-in-out;
-  margin-left: -40px;
 }
 .login-input-error input:focus{
   border-color:#0681C5;
@@ -166,12 +164,12 @@ export default {
   border-radius: 10px;
   border:none;
   display: block;
-  width: 65%;
+  width: 66%;
   padding: 13px 10px;
-  margin-left: 100px;
+  margin-left: 110px;
 }
 .description {
-  margin-left: 90px;
+  margin-left: 100px;
   padding-top: 80px;
   font-size: 24px;
   line-height: 48px;
@@ -181,7 +179,7 @@ export default {
   margin-bottom: -10px;
 }
 .description-2 {
-  margin-left: 90px;
+  margin-left: 100px;
   margin-right: 70px;
   padding-top: 20px;
   padding-bottom: 80px;
@@ -199,9 +197,6 @@ export default {
   width: 100%;
   margin-top: 15px;
   margin-left: 105px;
-}
-.error-text.cnt{
-  text-align: center;
 }
 .error{
   margin-left: 105px;
