@@ -8,3 +8,6 @@
     3.3- Save the downloaded Chrome Driver's PATH on your local machine.
     3.4- Put the local path to line 12 in Test.java file.
 4- Now, tests can be run either separately or all together.
+
+Note: Project is implemented on Intellij with Java 8. 
+To run the tests, Intellij is recommended.
