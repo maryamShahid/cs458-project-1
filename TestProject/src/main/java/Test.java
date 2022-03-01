@@ -9,6 +9,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class Test {
 
+    private static final String chromeDriverPath = "C:\\Users\\murat\\Desktop\\chromedriver_win32\\chromedriver.exe";
+
+
     private final String netflixURL = "http://localhost:8080";
 
     private final String loginButtonXPath = "//button[text()='Sign In']";
@@ -27,7 +30,7 @@ public class Test {
     private final String placeholderValueFor = "//h1[text()='Successful Login']";
 
     static {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\murat\\Desktop\\chromedriver_win32\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", chromeDriverPath);
     }
 
     @org.junit.Test
