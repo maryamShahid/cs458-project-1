@@ -27,7 +27,8 @@ public class Test {
 
     private final String successMessageXPath = "//h1[text()='Successful Login']";
 
-    private final String placeholderValueFor = "//h1[text()='Successful Login']";
+    private final String placeholderValueForId = "Email or phone number";
+    private final String placeholderValueForPassword = "Password";
 
     static {
         System.setProperty("webdriver.chrome.driver", chromeDriverPath);
@@ -85,13 +86,11 @@ public class Test {
 
         driver.get(netflixURL);
 
-        driver.findElement(By.xpath(idInputXPath)).sendKeys(validPhoneNumber);
-        driver.findElement(By.xpath(passwordInputXPath)).sendKeys(validPassword);
+        String idPlaceholder = driver.findElement(By.xpath(idInputXPath)).getAttribute("placeholder");
+        String passwordPlaceholder = driver.findElement(By.xpath(passwordInputXPath)).getAttribute("placeholder");
 
-        driver.findElement(By.xpath(loginButtonXPath)).click();
-
-        assertThat(driver.findElement(By.xpath(successMessageXPath)).isDisplayed()).isTrue();
-        assertThat(driver.findElement(By.xpath(successMessageXPath)).getText()).isEqualTo("Successful Login");
+        assertThat(idPlaceholder).isEqualTo(placeholderValueForId);
+        assertThat(passwordPlaceholder).isEqualTo(placeholderValueForPassword);
     }
 
     private ChromeDriver createInvisibleChromeDriver() {
