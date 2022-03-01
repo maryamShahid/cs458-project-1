@@ -1,5 +1,4 @@
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
@@ -13,6 +12,7 @@ public class Test {
 
 
     private final String netflixURL = "http://localhost:8080";
+    private final String facebookURL = "http://localhost:3000";
 
     private final String loginButtonXPath = "//button[text()='Sign In']";
     private final String errorMessage1XPath = "//div[@class='error-text' and text()='Please enter a valid email or phone number.']";
@@ -24,8 +24,18 @@ public class Test {
     private final String validPhoneNumber = "05527856126";
     private final String validPassword = "1234";
 
+    private final String invalidPhoneNumber = "123456789";
+    private final String invalidPassword = "asd";
+
 
     private final String successMessageXPath = "//h1[text()='Successful Login']";
+
+    private final String errorMessageXPath = "//div[@class='error']";
+    private final String errorMessageContent = "Sorry, we can't find an account with this email address. Please try again or create a new account.";
+
+    private final String facebookButton = "//*[@id='app']/div/main/div/div/div/div/div[1]/div[4]/button[3]";
+
+
 
     private final String placeholderValueForId = "Email or phone number";
     private final String placeholderValueForPassword = "Password";
@@ -36,7 +46,6 @@ public class Test {
 
     @org.junit.Test
     public void applicationResponsesMultipleUsersSimultaneously() {
-
         IntStream.range(0, 30).parallel().forEach(el -> {
             ChromeDriver driver = createInvisibleChromeDriver();
             driver.get(netflixURL);
@@ -50,7 +59,6 @@ public class Test {
     @org.junit.Test
     public void applicationGivesRelevantFeedbackWhenInputsAreEmpty() {
         ChromeDriver driver = createInvisibleChromeDriver();
-
         driver.get(netflixURL);
 
         driver.findElement(By.xpath(loginButtonXPath)).click();
@@ -81,16 +89,27 @@ public class Test {
     }
 
     @org.junit.Test
-    public void checkInputPlaceholdersAreCorrect() {
+    public void applicationShowsErrorWhenInvalidInputsAreProvided() {
         ChromeDriver driver = createInvisibleChromeDriver();
 
         driver.get(netflixURL);
 
-        String idPlaceholder = driver.findElement(By.xpath(idInputXPath)).getAttribute("placeholder");
-        String passwordPlaceholder = driver.findElement(By.xpath(passwordInputXPath)).getAttribute("placeholder");
+        driver.findElement(By.xpath(idInputXPath)).sendKeys(invalidPhoneNumber);
+        driver.findElement(By.xpath(passwordInputXPath)).sendKeys(invalidPassword);
 
-        assertThat(idPlaceholder).isEqualTo(placeholderValueForId);
-        assertThat(passwordPlaceholder).isEqualTo(placeholderValueForPassword);
+        driver.findElement(By.xpath(loginButtonXPath)).click();
+
+        assertThat(driver.findElement(By.xpath(errorMessageXPath)).isDisplayed()).isTrue();
+        assertThat(driver.findElement(By.xpath(errorMessageXPath)).getText()).isEqualTo(errorMessageContent);
+    }
+
+    @org.junit.Test
+    public void facebookSuccessfulLogin() throws InterruptedException {
+        ChromeDriver driver =  createInvisibleChromeDriver();
+        driver.get(facebookURL);
+        Thread.sleep(500);
+
+        driver.findElement(By.xpath(facebookButton)).click();
     }
 
     private ChromeDriver createInvisibleChromeDriver() {
